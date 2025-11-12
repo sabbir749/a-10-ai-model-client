@@ -10,7 +10,8 @@ import AddModel from "../Pages/AddModel/AddModel";
 import ModelDetails from "../Pages/ModelDetails/ModelDetails";
 import UpdateModel from "../Pages/UpdateModel/UpdateModel";
 import MyModels from "../Pages/MyModels/MyModels";
-import MyDownloads from "../Pages/MyDownloads/MyDownloads";
+import MyPurchase from "../Pages/MyPurchase/MyPurchase";
+
 
 export const router = createBrowserRouter([
   {
@@ -62,10 +63,10 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/my-downloads",
+        path: "/my-purchase",
         element: (
           <PrivateRoute>
-            <MyDownloads />
+            <MyPurchase />
           </PrivateRoute>
         ),
       },

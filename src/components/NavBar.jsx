@@ -139,7 +139,7 @@ const NavBar = () => {
               </li>
 
               <li >
-                <Link to={"/my-downloads"}>
+                <Link to={"/my-purchase"}>
                 My Model Purchase
                 </Link>
               </li>

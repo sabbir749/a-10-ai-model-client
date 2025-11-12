@@ -10,7 +10,7 @@ const ModelDetails = () => {
   const [model, setModel] = useState({});
   const [loading, setLoading] = useState(true);
   const { user } = use(AuthContext);
-  const [refetch, setRefecth] = useState(false)
+  const [refetch, setRefetch] = useState(false)
 
   useEffect(() => {
     fetch(`http://localhost:3000/models/${id}`, {
@@ -27,7 +27,7 @@ const ModelDetails = () => {
       });
   }, [user, id, refetch]);
 
-  const handleDlete = () => {
+  const handleDelete = () => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -65,13 +65,24 @@ const ModelDetails = () => {
   const handleDownload = () => {
     const finalModel = {
       name: model.name,
-      downloads: model.downloads,
-      created_by: model.created_by,
       description: model.description,
-      thumbnail: model.thumbnail,
-      created_at: new Date(),
-      downloaded_by: user.email,
+      image: model.image,
+      createdBy: model.created_by,
+      useCase: model.useCase,
+      createdAt: new Date(),
+      purchasedBy: user.email,
+      purchased: model.downloads,
     };
+
+    // "name": "Detectron2",
+    // "framework": "PyTorch",
+    // "useCase": "Object Detection",
+    // "dataset": "COCO",
+    // "description": "Modular object detection and segmentation framework developed by Meta AI, supporting Mask R-CNN and more.",
+    // "image": "https://i.ibb.co/Z6qg6xv/detectron2-model.png",
+    // "createdBy": "visionpro@example.com",
+    // "createdAt": "2025-11-02T11:00:00.000Z",
+    // "purchased": 28
 
     fetch(`http://localhost:3000/downloads/${model._id}`, {
       method: "POST",
@@ -83,23 +94,9 @@ const ModelDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        toast.success("Successfully downloaded!");
-        setRefecth(!refetch)
+        toast.success("Successfully Purchased!");
+        setRefetch(!refetch)
 
-        // alternative solution of realtime download count update
-
-        //     fetch(`http://localhost:3000/models/${id}`, {
-        //   headers: {
-        //     authorization: `Bearer ${user.accessToken}`,
-        //   },
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     setModel(data.result);
-        //     console.log(" Api called!")
-        //     console.log(data);
-        //     setLoading(false);
-        //   });
 
       })
       .catch((err) => {
@@ -117,7 +114,7 @@ const ModelDetails = () => {
         <div className="flex flex-col md:flex-row gap-8 p-6 md:p-8">
           <div className="shrink-0 w-full md:w-1/2">
             <img
-              src={model.thumbnail}
+              src={model.image}
               alt=""
               className="w-full object-cover rounded-xl shadow-md"
             />
@@ -130,11 +127,21 @@ const ModelDetails = () => {
 
             <div className="flex gap-3">
               <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                {model.category}
+                {model.framework}
               </div>
 
               <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
-                Downloaded: {model.downloads}
+                Purchased: {model.purchased}
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                {model.dataset}
+              </div>
+
+              <div className="badge badge-lg badge-outline text-pink-600 border-pink-600 font-medium">
+                Use Case: {model.useCase}
               </div>
             </div>
 
@@ -153,10 +160,10 @@ const ModelDetails = () => {
                 onClick={handleDownload}
                 className="btn btn-secondary rounded-full"
               >
-                Download
+                Purchase
               </button>
               <button
-                onClick={handleDlete}
+                onClick={handleDelete}
                 className="btn btn-outline rounded-full border-gray-300 hover:border-pink-500 hover:text-pink-600"
               >
                 Delete

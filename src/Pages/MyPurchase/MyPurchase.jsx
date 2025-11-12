@@ -1,14 +1,15 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ModelCard } from "../../components/ModelCard";
+import PurchaseCard from "../../components/PurchaseCard";
 
-const MyDownloads = () => {
+const MyPurchase = () => {
   const { user } = use(AuthContext);
   const [models, setModels] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-downloads?email=${user.email}`, {
+    fetch(`http://localhost:3000/my-purchase?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },
@@ -26,13 +27,13 @@ const MyDownloads = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-1 gap-5">
         {models.map((model) => (
-          <ModelCard key={model._id} model={model} />
+          <PurchaseCard key={model._id} model={model} />
         ))}
       </div>
     </div>
   );
 };
 
-export default MyDownloads;
+export default MyPurchase;

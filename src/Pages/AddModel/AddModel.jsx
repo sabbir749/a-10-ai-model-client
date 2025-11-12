@@ -1,24 +1,37 @@
 import { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router";
 
 const AddModal = () => {
 
   const { user } = use(AuthContext)
-
+const Navigate=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const formData = {
       name: e.target.name.value,
-      category: e.target.category.value,
+      framework: e.target.framework.value,
+      useCase: e.target.useCase.value,
+      dataset: e.target.dataset.value,
       description: e.target.description.value,
-      thumbnail: e.target.thumbnail.value,
+      image: e.target.thumbnail.value,
+      createdBy: user.email,
       created_at: new Date(),
-      downloads: 0,
-      created_by: user.email
+      purchased: 5,
     }
+
+    //     "name": "T5 Transformer",
+    // "framework": "TensorFlow",
+    // "useCase": "Text-to-Text",
+    // "dataset": "C4",
+    // "description": "Text-to-text transfer transformer designed to convert any NLP task into a unified text generation format.",
+    // "image": "https://i.ibb.co/m5wj8vY/t5-transformer.png",
+    // "createdBy": "nlpinnovator@example.com",
+    // "createdAt": "2025-11-05T17:50:00.000Z",
+    // "purchased": 19
 
     fetch('http://localhost:3000/models', {
       method: "POST",
@@ -30,6 +43,7 @@ const AddModal = () => {
       .then(res => res.json())
       .then(data => {
         toast.success("Successfully added!")
+        Navigate('/all-models')
         console.log(data)
       })
       .catch(err => {
@@ -59,25 +73,41 @@ const AddModal = () => {
 
           {/* Category Dropdown */}
           <div>
-            <label className="label font-medium">Category</label>
+            <label className="label font-medium">Framework</label>
             <select
               defaultValue={""}
-              name="category"
+              name="framework"
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
             >
               <option value="" disabled>
-                Select category
+                Framework
               </option>
-              <option value="Vehicles">Vehicles</option>
-              <option value="Plants">Plants</option>
-              <option value="Foods">Foods</option>
-              <option value="Home & Living">Home & Living</option>
-              <option value="Characters">Characters</option>
-              <option value="Space">Space</option>
-              <option value="Animals">Animals</option>
-              <option value="Other">Other</option>
+              <option value="Vehicles">PyTorch</option>
+              <option value="Plants">TensorFlow</option>
+   
             </select>
+          </div>
+
+          <div>
+            <label className="label font-medium">Use Case</label>
+            <input
+              type="text"
+              name="useCase"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Use Case"
+            />
+          </div>
+          <div>
+            <label className="label font-medium">Dataset</label>
+            <input
+              type="text"
+              name="dataset"
+              required
+              className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+              placeholder="Dataset"
+            />
           </div>
 
           {/* Description Textarea */}
