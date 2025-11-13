@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from "react-router";
 const AddModal = () => {
 
   const { user } = use(AuthContext)
-const Navigate=useNavigate()
+  const Navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -33,7 +33,7 @@ const Navigate=useNavigate()
     // "createdAt": "2025-11-05T17:50:00.000Z",
     // "purchased": 19
 
-    fetch('http://localhost:3000/models', {
+    fetch('https://a-10-ai-model-server.vercel.app/models', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const Navigate=useNavigate()
               </option>
               <option value="Pytorch">PyTorch</option>
               <option value="TensorFlow">TensorFlow</option>
-   
+
             </select>
           </div>
 

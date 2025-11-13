@@ -10,7 +10,7 @@ const MyPurchase = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/my-downloads?email=${user.email}`, {
+    fetch(`https://a-10-ai-model-server.vercel.app/my-downloads?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },

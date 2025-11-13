@@ -23,12 +23,12 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:3000/latest-models')
+        loader: () => fetch('https://a-10-ai-model-server.vercel.app/latest-models')
       },
       {
         path: "/all-models",
         element: <AllModels />,
-        loader: () => fetch('http://localhost:3000/models')
+        loader: () => fetch('https://a-10-ai-model-server.vercel.app/models')
       },
 
       {
@@ -81,7 +81,7 @@ export const router = createBrowserRouter([
             <UpdateModel />
           </PrivateRoute>
         ),
-        // loader: ({ params }) => fetch(`http://localhost:3000/models/${params.id}`)
+        // loader: ({ params }) => fetch(`https://a-10-ai-model-server.vercel.app/models/${params.id}`)
       },
       {
         path: "/auth/login",

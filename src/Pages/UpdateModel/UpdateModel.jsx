@@ -13,7 +13,7 @@ const UpdateModel = () => {
   useEffect(() => {
     if (!user?.accessToken) return; // wait for user
 
-    fetch(`http://localhost:3000/models/${id}`, {
+    fetch(`https://a-10-ai-model-server.vercel.app/models/${id}`, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
       },
@@ -56,7 +56,7 @@ const UpdateModel = () => {
       purchased: model.purchased || 0,
     };
 
-    fetch(`http://localhost:3000/models/${model._id}`, {
+    fetch(`https://a-10-ai-model-server.vercel.app/models/${model._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

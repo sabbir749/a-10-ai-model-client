@@ -1,7 +1,7 @@
 // File: AllModels.jsx
 import { useLoaderData } from "react-router";
 import { ModelCard } from "../../components/ModelCard";
-import { useState,  } from "react";
+import { useState, } from "react";
 
 const AllModels = () => {
   const data = useLoaderData();
@@ -19,7 +19,7 @@ const AllModels = () => {
     const search_text = e.target.search.value;
     setLoading(true);
 
-    fetch(`http://localhost:3000/search?search=${search_text}`)
+    fetch(`https://a-10-ai-model-server.vercel.app/search?search=${search_text}`)
       .then((res) => res.json())
       .then((data) => {
         setModels(data);

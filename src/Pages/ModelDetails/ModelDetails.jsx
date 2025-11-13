@@ -1,5 +1,5 @@
 import { use, useEffect, useState } from "react";
-import { Link, useNavigate,  } from "react-router";
+import { Link, useNavigate, } from "react-router";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,37 +7,37 @@ import toast from "react-hot-toast";
 
 const ModelDetails = () => {
   const navigate = useNavigate();
-const { id } = useParams();
+  const { id } = useParams();
   const [model, setModel] = useState({});
   const [loading, setLoading] = useState(true);
   const { user } = use(AuthContext);
   const [refetch, setRefetch] = useState(false);
 
-useEffect(() => {
-  if (!id) return;
+  useEffect(() => {
+    if (!id) return;
 
-  fetch(`http://localhost:3000/models/${id}`, {
-    headers: {
-      authorization: `Bearer ${user?.accessToken}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      
-      if (data.success && data.result) {
-        setModel(data.result);
-      } else {
-        setModel(null); // explicitly set null if not found
-      }
-      setLoading(false);
+    fetch(`https://a-10-ai-model-server.vercel.app/models/${id}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`,
+      },
     })
-    .catch((err) => {
-      console.log(err);
-      setModel(null);
-      setLoading(false);
-    });
-}, [user, id, refetch]);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+
+        if (data.success && data.result) {
+          setModel(data.result);
+        } else {
+          setModel(null); // explicitly set null if not found
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setModel(null);
+        setLoading(false);
+      });
+  }, [user, id, refetch]);
 
 
   const handleDelete = () => {
@@ -52,7 +52,7 @@ useEffect(() => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/models/${model._id}`, {
+        fetch(`https://a-10-ai-model-server.vercel.app/models/${model._id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -86,12 +86,12 @@ useEffect(() => {
       purchased: model.purchased,
     };
 
-    fetch(`http://localhost:3000/downloads/${model._id}`, {
+    fetch(`https://a-10-ai-model-server.vercel.app/downloads/${model._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...finalModel,downloadedBy: user.email}),
+      body: JSON.stringify({ ...finalModel, downloadedBy: user.email }),
     })
       .then((res) => res.json())
       .then(() => {
@@ -101,8 +101,8 @@ useEffect(() => {
       .catch((err) => console.log(err));
   };
 
-if (loading) return <div>Loading...</div>;
-if (!model) return <div>Model not found!</div>; // now it works
+  if (loading) return <div>Loading...</div>;
+  if (!model) return <div>Model not found!</div>; // now it works
 
   const isCreator = user?.email === model.createdBy; // check if logged-in user is creator
 
@@ -149,11 +149,10 @@ if (!model) return <div>Model not found!</div>; // now it works
               {/* Update Button */}
               <Link
                 to={isCreator ? `/update-model/${model._id}` : "#"}
-                className={`btn btn-primary rounded-full text-white border-0 ${
-                  isCreator
+                className={`btn btn-primary rounded-full text-white border-0 ${isCreator
                     ? "bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
                     : "bg-gray-400 cursor-not-allowed"
-                }`}
+                  }`}
                 onClick={(e) => !isCreator && e.preventDefault()}
               >
                 Update Model
@@ -171,11 +170,10 @@ if (!model) return <div>Model not found!</div>; // now it works
               <button
                 onClick={handleDelete}
                 disabled={!isCreator}
-                className={`btn btn-outline rounded-full border-gray-300 ${
-                  isCreator
+                className={`btn btn-outline rounded-full border-gray-300 ${isCreator
                     ? "hover:border-pink-500 hover:text-pink-600"
                     : "text-gray-400 border-gray-300 cursor-not-allowed"
-                }`}
+                  }`}
               >
                 Delete
               </button>
