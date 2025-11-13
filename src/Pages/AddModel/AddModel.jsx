@@ -44,7 +44,7 @@ const AddModal = () => {
       .then(data => {
         toast.success("Successfully added!")
         Navigate('/all-models')
-        console.log(data)
+        // console.log(data)
       })
       .catch(err => {
         console.log(err)

@@ -10,7 +10,7 @@ const PurchasedDetails = () => {
   //   const [loading, setLoading] = useState(true);
   const { user } = use(AuthContext);
 
-  console.log(model);
+  // console.log(model);
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const PurchasedDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (data.success && data.result) {
           setModel(data.result);

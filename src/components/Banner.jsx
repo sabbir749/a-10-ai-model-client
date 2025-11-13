@@ -11,7 +11,7 @@ const Slider = () => {
 
     const data = useLoaderData()
     const reducedData = data.slice(0, 4)
-    console.log(data); 
+    // console.log(data); 
 
     return (
         <div>

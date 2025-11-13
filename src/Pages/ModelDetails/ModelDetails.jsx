@@ -27,7 +27,7 @@ const ModelDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (data.success && data.result) {
           setModel(data.result);

@@ -6,7 +6,7 @@ import AboutAi from "../../components/AboutAi";
 import GetStarted from "../../components/GetStarted";
 const Home = () => {
     const data = useLoaderData()
-    console.log(data)
+    // console.log(data)
     return (
         <div>
             <Banner />

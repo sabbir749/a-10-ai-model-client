@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const ModelCard = ({ model }) => {
   const { name, image, framework, useCase, dataset, purchased, description, _id, createdBy} = model
-  console.log(model);
+  // console.log(model);
   
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
