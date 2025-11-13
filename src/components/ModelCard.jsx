@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 
 export const ModelCard = ({ model }) => {
-  const { name, image, framework, useCase, dataset, purchased, description, _id, created_by } = model
+  const { name, image, framework, useCase, dataset, purchased, description, _id, purchasedBy ,createdBy} = model
+  console.log(model);
+  
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
       <figure className="h-48 overflow-hidden">
@@ -20,7 +22,8 @@ export const ModelCard = ({ model }) => {
         <div className="flex justify-between">    
              <div className="badge text-xs border border-blue-400 rounded-full">{dataset}</div>
           <div className="badge text-xs border border-blue-400 rounded-full">UseCase: {useCase}</div></div>
-        <div className="text-xs text-secondary">{created_by}</div>
+        <div className="text-xs text-secondary">{purchasedBy}</div>
+        <div className="text-xs text-secondary">{createdBy}</div>
         <p className="line-clamp-1">
           {description}
         </p>

@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ModelCard } from "../../components/ModelCard";
-import PurchaseCard from "../../components/PurchaseCard";
+
 
 const MyPurchase = () => {
   const { user } = use(AuthContext);
@@ -27,9 +27,9 @@ const MyPurchase = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-1 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {models.map((model) => (
-          <PurchaseCard key={model._id} model={model} />
+          <ModelCard key={model._id} model={model} />
         ))}
       </div>
     </div>

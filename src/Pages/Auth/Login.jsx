@@ -1,14 +1,20 @@
 import { use } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { signInUser, signInWithGoogle } = use(AuthContext);
+  const { signInUser, signInWithGoogle ,user} = use(AuthContext);
 
+  
+  
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location);
+
+    if (user) {
+      return <Navigate to='/' replace />;
+    }
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -63,7 +69,7 @@ const Login = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
+            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-[#004BD3] to-[#004ad37c]">
               Login
             </button>
           </fieldset>

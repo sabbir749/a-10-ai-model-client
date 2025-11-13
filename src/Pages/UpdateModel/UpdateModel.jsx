@@ -1,8 +1,11 @@
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthContext";
+import { use } from "react";
 
 const UpdateModel = () => {
+    const { user } = use(AuthContext)
   const data = useLoaderData();
   const model = data.result;
 
@@ -11,10 +14,15 @@ const UpdateModel = () => {
 
     const formData = {
       name: e.target.name.value,
-      category: e.target.category.value,
+      framework: e.target.framework.value,
+      useCase: e.target.useCase.value,
+      dataset: e.target.dataset.value,
       description: e.target.description.value,
-      thumbnail: e.target.thumbnail.value,
-    };
+      image: e.target.thumbnail.value,
+      createdBy: user.email,
+      created_at: new Date(),
+      purchased: 5,
+    }
 
     fetch(`http://localhost:3000/models/${model._id}`, {
       method: "PUT",

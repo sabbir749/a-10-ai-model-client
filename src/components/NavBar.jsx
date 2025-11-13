@@ -16,16 +16,16 @@ const NavBar = () => {
 
   useEffect(() => {
     const html = document.querySelector('html')
-     html.setAttribute("data-theme", theme)
-     localStorage.setItem("theme", theme)
+    html.setAttribute("data-theme", theme)
+    localStorage.setItem("theme", theme)
   }, [theme])
 
 
   const handleTheme = (checked) => {
-    setTheme(checked ? "dark": "light")
+    setTheme(checked ? "dark" : "light")
   }
   return (
-    <div className="navbar py-0 min-h-0 z-1 shadow-sm px-7">
+    <div className="navbar py-0 min-h-0 z-9999 shadow-sm relative px-7">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -60,11 +60,11 @@ const NavBar = () => {
                 <IoLogoModelS /> All Models
               </NavLink>
             </li>
-                  <li>
-            <NavLink to={"/add-model"}>
-             <ImBoxAdd /> Add model
-            </NavLink>
-          </li>
+            <li>
+              <NavLink to={"/add-model"}>
+                <ImBoxAdd /> Add model
+              </NavLink>
+            </li>
           </ul>
         </div>
         <Link to={"/"} className="flex items-center gap-1 text-xl font-bold">
@@ -86,10 +86,10 @@ const NavBar = () => {
           </li>
           <li>
             <NavLink to={"/add-model"}>
-             <ImBoxAdd /> Add model
+              <ImBoxAdd /> Add model
             </NavLink>
           </li>
-{/* 
+          {/* 
           <li>
             <NavLink to={"/profile"}>
               <FaUser /> Profile
@@ -98,11 +98,11 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-3">
-                     <input
-           onChange={(e)=> handleTheme(e.target.checked)}
-           type="checkbox"
-           defaultChecked={localStorage.getItem('theme') === "dark"}
-           className="toggle"/>
+        <input
+          onChange={(e) => handleTheme(e.target.checked)}
+          type="checkbox"
+          defaultChecked={localStorage.getItem('theme') === "dark"}
+          className="toggle" />
         {user ? (
           <div className="dropdown dropdown-end z-50">
             <div
@@ -140,13 +140,13 @@ const NavBar = () => {
 
               <li >
                 <Link to={"/my-purchase"}>
-                My Model Purchase
+                  My Model Purchase
                 </Link>
               </li>
 
- 
-              
-      
+
+
+
               <li>
                 <button
                   onClick={signOutUser}
@@ -160,7 +160,7 @@ const NavBar = () => {
         ) : (
           <Link
             to={"/auth/login"}
-            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-[#004BD3] to-[#004ad385] text-white"
           >
             {" "}
             <IoLogIn /> Login

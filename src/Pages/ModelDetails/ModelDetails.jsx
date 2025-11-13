@@ -65,13 +65,15 @@ const ModelDetails = () => {
   const handleDownload = () => {
     const finalModel = {
       name: model.name,
+      framework: model.framework,
+      useCase: model.useCase,
+      dataset: model.dataset,
       description: model.description,
       image: model.image,
       createdBy: model.created_by,
-      useCase: model.useCase,
-      createdAt: new Date(),
       purchasedBy: user.email,
-      purchased: model.downloads,
+      createdAt: new Date(),
+      purchased: model.purchased,
     };
 
     // "name": "Detectron2",

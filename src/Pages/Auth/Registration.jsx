@@ -1,13 +1,16 @@
 import React, { use } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FaGoogle } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, updateUserProfile, signInWithGoogle } = use(AuthContext);
+  const { createUser, updateUserProfile, signInWithGoogle,user } = use(AuthContext);
   const navigate = useNavigate();
 
+  if (user) {
+    return <Navigate to='/' replace />;
+  }
   const handleRegister = (event) => {
     event.preventDefault();
     const displayName = event.target.displayName.value;
@@ -84,7 +87,7 @@ const Register = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-pink-500 to-red-600">
+            <button className="btn text-white mt-4 rounded-full bg-linear-to-r from-[#004BD3] to-[#004ad370]">
               Register
             </button>
           </fieldset>

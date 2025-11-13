@@ -84,11 +84,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/auth/login",
-        element: <Login />,
+        element:
+          <PrivateRoute>
+            <Login />
+          </PrivateRoute>,
       },
       {
         path: "/auth/register",
-        element: <Register />,
+        element: <PrivateRoute>
+          <Register />
+        </PrivateRoute>,
       },
     ],
   },
