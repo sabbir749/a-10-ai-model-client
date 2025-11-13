@@ -30,6 +30,7 @@ const MyModels = () => {
 
     return (
         <div>
+             <div className="text-center text-5xl font-bold mt-5 border-b-2 border-b-blue-400 w-1/2 mb-11 mx-auto pb-5">My <span className="text-blue-800 font-black">Model</span> </div>
             <div className="grid grid-cols-3 lg:grid-cols-4 gap-3">
                 {models.map(model => <ModelCard key={model._id} model={model} />)}
             </div>

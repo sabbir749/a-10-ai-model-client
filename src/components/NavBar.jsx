@@ -130,7 +130,7 @@ const NavBar = () => {
                 <Link to={"/my-models"}>My Models</Link>
               </li>
               <li>
-                <Link to={"/my-downloads"}>My Model Purchase</Link>
+                <Link to={"/my-downloads"}>My Purchased Model</Link>
               </li>
 
               <li>

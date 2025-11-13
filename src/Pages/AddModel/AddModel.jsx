@@ -57,7 +57,9 @@ const AddModal = () => {
   return (
     <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
       <div className="card-body p-6 relative">
-        <h2 className="text-2xl font-bold text-center mb-6">Add New Model</h2>
+     
+     <div className="text-center text-5xl font-bold border-b-2 border-b-blue-400 mb-4 mx-auto pb-5">Add <span className="text-blue-800 font-black">Model</span> </div>
+
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
