@@ -1,4 +1,7 @@
-Project Name: AI Model Inventory Manager
+# Project Name: 
+
+
+__AI Model Inventory Manager__
 
 Site Link:  https://a-10-ai-model.netlify.app/
 
@@ -11,9 +14,33 @@ model cataloging, metadata management.. It’s a practical way to learn web deve
 while simulating a tool used by AI practitioners, making it both educational and relevant to
 current tech trends.
 
-Features: 
+# Key Features: 
 * In this AI model website you can view many ai models.
 * You can purchase and visit the ai models.
 * Also you can add new ai models here.
 * Only the created user can delete and update the ai model.
 * You can login or signUp with google only and also can register with email and password.
+
+
+# Tech Stack 🛠️ 
+
+
+Frontend: Html, Css, Javascript, React.js
+
+Backend: Node.js, Express.js
+
+Database: MongoDB
+
+Authentication: Firebase, JWT
+
+Deployment: Vercel
+
+
+
+
+## Contact 📬
+
+**🔗 Live URL:** [AI Model](https://a-10-ai-model.netlify.app/)
+
+Sabbir Hossain - [@sabbir hossain](https://www.linkedin.com/in/sabbir-hossain-07960520a/) - sabbir213924@gmail.com  
+
