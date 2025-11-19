@@ -36,6 +36,8 @@ Authentication: Firebase, JWT
 Deployment: Vercel
 
 
+# ScreenShot
+<img src="/ai-model.png" alt="Banner image">
 
 
 ## Contact 📬
